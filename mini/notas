@@ -1,0 +1,357 @@
+https://openweathermap.org/city/3583361 -----esta es la id de mi ciudad
+1035e2d3a69fd2283ed482fa835cc0f5 ------esta es mi  API key
+
+
+
+
+----------
+config multiple
+set $lblue #4C9ED9
+set $dblue #2D5B7D
+set $lgrey #EBECED
+set $dgrey #555555
+set $white #FFFFFF
+set $black #000000
+set $red   #DD0000
+
+#                       border  backgr  text   indicator
+
+
+bar {
+    output VGA1
+    position top
+    tray_output VGA1
+    strip_workspace_numbers yes
+    font pango:Source Sans Pro-10 10
+    colors {
+        separator #666666
+    	background #222222
+    	statusline #dddddd
+    	focused_workspace #0088CC #0088CC #ffffff
+    	active_workspace #333333 #333333 #ffffff
+    	inactive_workspace #333333 #333333 #888888
+    	urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+
+bar {
+    output DP1
+    position top
+    tray_output DP1
+    strip_workspace_numbers yes
+    #status_command i3status -c ~/.i3/i3status.conf
+    status_command ~/.i3/conky-i3bar
+    #status_command ~/.i3/i3status.py
+    #status_command i3blocks -c ~/.i3/i3blocks.conf
+    font pango:Source Sans Pro-10 10
+    colors {
+        separator #666666
+    	background #222222
+    	statusline #dddddd
+    	focused_workspace #0088CC #0088CC #ffffff
+    	active_workspace #333333 #333333 #ffffff
+    	inactive_workspace #333333 #333333 #888888
+    	urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
+------------------------------
+
+
+
+
+
+
+
+
+
+
+
+####### paso 5 copias fuentes a utilizar en carpeta .font a ~/home 
+# Fuente descargada de https://github.com/supermarin/YosemiteSanFranciscoFont
+# sudo fc-cache -f -v
+#
+# instalar tema arc-theme dar click en:
+# https://github.com/horst3180/arc-firefox-theme/releases/download/53.20170420/arc-darker-firefox-theme-53.20170420.xpi
+#
+# CLIQZ for Linux installieren
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 4E0C443A
+# echo deb http://repository.cliqz.com/dist/debian-release stable main | sudo tee /etc/apt/sources.list.d/cliqz.list
+# sudo apt-get update
+# sudo apt-get install cliqz
+#
+
+# instalar chromiun
+# sudo add-apt-repository ppa:canonical-chromium-builds/stage
+# sudo apt-get update
+# sudo apt-get install chromium-browser
+#
+
+
+
+# montar particiones automaticamente
+# 1 windows
+# sudo mkdir /media/windows
+# sudo fdisk -l | grep NTFS | cut -d" " -f1
+# sudo su
+# sudo echo "/dev/sda1 /media/windows ntfs-3g auto,rw,users,umask=000 0 0" >> /etc/fstab
+# 2 ext4
+# UUID=XXXXXXXXXXXX     /media/carpeta_montaje   ext4   errors=remount-ro 0 1
+#
+
+# 
+#Instalar teme arc-darker desde aqui
+# https://github.com/horst3180/Arc-theme 
+# http://software.opensuse.org/download.html?project=home%3AHorst3180&package=arc-theme
+# wget -nv http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O Release.key
+# sudo apt-key add - < Release.key
+# sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
+# sudo apt-get update
+# sudo apt-get install arc-theme
+
+# Instalar tema de firefox desde aqui
+# https://github.com/horst3180/arc-firefox-theme/releases
+
+# instalar paper circle
+# sudo add-apt-repository ppa:snwh/pulp
+# sudo apt-get update
+# sudo apt-get install paper-icon-theme
+# sudo apt-get install paper-gtk-theme
+# sudo apt-get install paper-cursor-theme
+
+# instalar skype
+# sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+# sudo dpkg --add-architecture i386
+# sudo apt-get update
+# sudo apt-get install skype
+
+# instalar kodi
+# sudo add-apt-repository ppa:team-xbmc/ppa
+# sudo apt update && sudo apt install kodi
+
+# instalar insync 
+# echo "deb http://apt.insynchq.com/ubuntu $(lsb_release -cs) non-free" | sudo tee /etc/apt/sources.list.d/insync.list
+# wget -O - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key | sudo apt-key add -
+# sudo apt-get update
+# sudo apt-get install insync
+# insync start
+
+#instalar onedrive-d
+# sudo apt-get install python-pip python-dev build-essential 
+# sudo pip install --upgrade pip 
+# sudo pip install --upgrade virtualenv
+# git clone https://github.com/xybu/onedrive-d-old.git
+# cd onedrive-d-old
+# sudo python3 setup.py install
+# sudo python3 setup.py clean
+# mkdir ~/.onedrive
+# cp ./onedrive_d/res/default_ignore.ini ~/.onedrive/ignore_v2.ini
+# sudo touch /var/log/onedrive_d.log
+# sudo chown `whoami` /var/log/onedrive_d.log
+# onedrive-pref
+# onedrive-d start
+
+# instalr corrector ortografico WPS
+# cd /opt/kingsoft/wps-office/office6/dicts
+# sudo wget http://wps-community.org/download/dicts/es_ES.zip
+# sudo wget http://wps-community.org/download/dicts/en_US.zip
+# sudo unzip es_ES.zip en_US.ZIP
+# sudo rm es_ES.zip en_US.ZIP
+
+# instalar yandex-browser
+# sudo nano /etc/apt/sources.list.d/yandex-browser.list
+# deb [arch=amd64] http://repo.yandex.ru/yandex-browser/deb beta main
+# 
+# wget https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG
+# sudo apt-key add YANDEX-BROWSER-KEY.GPG
+# sudo apt update
+# sudo apt-get install yandex-browser-beta
+
+
+
+# echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex.list > /dev/null
+# wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
+# sudo apt-get update
+# sudo apt-get install -y yandex-disk
+
+
+
+
+
+
+
+
+# lanzadores
+# sudo add-apt-repository ppa:noobslab/macbuntu
+# sudo apt-get update
+# sudo apt-get install albert
+
+########################################################################
+
+# I3 CONFIG INICIA AQUI
+
+
+
+
+#      
+# Establecer etiquetas a las areas de trabajo via https://github.com/FortAwesome/Font-Awesome/releases y
+# http://fontawesome.io/cheatsheet/
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10"
+
+
+
+
+
+
+
+.
+
+
+
+# Activar menu con aplicaciones de xfce... no funciona muy bien con i3
+# exec_always --no-startup-id xfce4-panel --disable-wm-check
+
+####### Combinaciones de teclas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Font for window titles. Will also be used by the bar unless a diff$
+# is used in the bar {} block below.
+# fuente descargada de https://github.com/supermarin/YosemiteSanFran$
+# instalar lxappearance y seleccionar DEFAULT FONT para aplicarla en$
+# gtk-font-name=System San Francisco Display 11 en las siguientes ru$
+
+# .config/gtk-3.0/settings.ini
+# [Settings]
+# gtk-theme-name=Arc-Darker
+# gtk-icon-theme-name=Moka
+# gtk-font-name=System San Francisco Display 11
+# gtk-cursor-theme-name=Adwaita
+# gtk-cursor-theme-size=0
+# gtk-toolbar-style=GTK_TOOLBAR_BOTH
+# gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TO$
+# gtk-button-images=1
+# gtk-menu-images=1
+# gtk-enable-event-sounds=1
+# gtk-enable-input-feedback-sounds=1
+# gtk-xft-antialias=1
+# gtk-xft-hinting=1
+# gtk-xft-hintstyle=hintfull
+
+# .gtkrc-2.0
+# DO NOT EDIT! This file will be overwritten by LXAppearance.
+# Any customization should be done in ~/.gtkrc-2.0.mine instead.
+# 
+# include "/home/rob/.gtkrc-2.0.mine"
+# gtk-theme-name="Raleigh"
+# gtk-icon-theme-name="hicolor"
+# gtk-font-name="Sans 10"
+# gtk-cursor-theme-name="Adwaita"
+# gtk-cursor-theme-size=0
+# gtk-toolbar-style=GTK_TOOLBAR_BOTH
+# gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+# gtk-button-images=1
+# gtk-menu-images=1
+# gtk-enable-event-sounds=1
+# gtk-enable-input-feedback-sounds=1
+# gtk-xft-antialias=1
+# gtk-xft-hinting=1
+# gtk-xft-hintstyle="hintfull"
+
+
+
+
+
+
+
+
+
+# sticky window
+bindsym $mod+Shift+s sticky toggle
+
+
+
+
+
+#################
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get install grub-customizer
+######
+sudo apt install git
+git config --global user.name "mrpilotatt";
+git config --global user.email mr.pilot.att@gmail.com;
+git config --global core.editor nano;
+git config --global merge.tool vimdiff;
+git config --list;
+git clone https://github.com/mrpilotatt/i3_configurador.git
+ls
+cd i3_configurador
+git pull
+#########
+odprobe vboxdrv
+sudo usermod -aG vboxusers `whoami`
+sudo usermod -aG vboxsf `whoami`
+sudo usermod --append --groups vboxsf USERNAME
+****************
+curl -# -L -o i3.zip https://github.com/levinit/i3wm-config/archive/master.zip && unzip i3.zip && cd i3wm-config-master && cp i3 i3status -t ~/.config -r && cp Pictures ~/ -r && ./config-en.sh
+
+
+
+
+agregar al archivo de inicio de i3
+exec compton 
+exec_always ~/script.sh 
+exec_always compton
+http://duncanlock.net/blog/2013/06/07/how-to-switch-to-compton-for-beautiful-tear-free-compositing-in-xfce/
+
+########
+###### Apply GTK theme, fonts, icon theme, login greeter
+###### and i3
+#cp -f ~/robmaster/configs/gtk/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+#cp -f ~/robmaster/configs/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
+#cp -f ~/robmaster/configs/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+#cp -f ~/robmaster/configs/i3/config ~/.config/i3/config
+
+##########
+sudo apt remove leafpad pcmanfm gucharmap gedit simple-scan mtpaint pidgin transmission-gtk sylpheed abiword gnumeric meld audacious xfburn gnome-mpv gdebi htop
+
+
+
+###################
+sudo chroot "/mnt/boot-sav/sda29" dpkg --configure -a
+sudo chroot "/mnt/boot-sav/sda29" apt-get install -fy
+sudo chroot "/mnt/boot-sav/sda29" apt-get purge -y grub*-common grub-common:i386 shim-signed
+sudo chroot "/mnt/boot-sav/sda29" apt-get install -y grub-pc
