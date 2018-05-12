@@ -1,0 +1,332 @@
+#
+# resumen de atajos
+# mouse+mod		si las ventanas estan divididas horizontales permite reescalar el tamano y mueve ventanas flotantes
+# mod+return		Abrir terminal
+# mod+shift+x		Bloquear computadora
+# mod+shift+q		Matar ventana activa
+# mod+d			dmenu
+# mod+Shift+e		Salir de I3
+# mod+Shift+r		reiniciar i3
+# mod+Shift+Z		Menu Salir
+# mod+b			dividir Horizontalmente
+# mod+v			Dividir Verticalmente
+# mod+f			Mostrar a pantalla completa
+# mod+Shift+c		recargar i3
+# mod+Shift+r		reiniciar i3 
+# mod+Shift+space	Cambiar entre modo apaisado y flotante
+# mod+r			Cambiar a modo de "Cambio de tamano"
+#----------------------------------------------------------------------------#
+# settings gnome terminal
+# text color #949AA4
+# cursor color #C0C5CE
+# background color #1B2B34
+# tabavtibity color #AA0000
+# Fuente personalizada # Hack 10
+#----------------------------------------------------------------------------#
+
+# i3 config file (v4) modificado por Roberto Flores
+#
+#=========== tecla -Super-
+# Tecla Alt es (Mod1), Tecla Windows es (Mod4)
+set $mod Mod4
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Fuente para los titulos de ventanas
+# fuentes para titulos y barra de notificacion a menos se indique lo contrario en la configuracion de la barra de estatus
+font pango:System San Francisco Display 10
+# ver anexo al final acerca de configuracion adicional para esta fuente
+# font pango:monospace 8
+
+#=========== Arrastrar ventanas, # Use Mouse+$mod 
+floating_modifier $mod
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Lanzar siempre gnome-terminal
+bindsym $mod+Return exec gnome-terminal
+
+#=========== Matar ventana actual, la opcion correcta es ctrl + w en la mayoria de ventanas
+bindsym $mod+Shift+q kill
+
+#=========== Lanzar dmenu (un lanzador de programas), $mod+d solo comandos, $mod+z solo nombre de aplicaciones
+bindsym $mod+d exec dmenu_run  -l 10
+bindsym $mod+z exec --no-startup-id i3-dmenu-desktop  -l 10
+
+#=========== Cambiar ventana activa
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+# otra opcion es:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+#=========== Mover la ventana Activa 
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+# otra opcion es:you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#=========== Lanzar ventanas una junto a la otra  
+bindsym $mod+h split h
+
+#=========== Lanzar ventanas una sobre la otra
+bindsym $mod+v split v
+
+#=========== Cambiar order entre apilado, tabulado o dividido
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+#=========== Cambiar ventana a modo flotante
+bindsym $mod+Shift+space floating toggle
+
+#=========== Cambiar ventana activa entre modo flotante o fijo
+bindsym $mod+space focus mode_toggle
+
+#=========== Cambiar ventana activa a ventana padre 
+bindsym $mod+a focus parent
+
+#=========== Cambiar ventana activa a ventana hija 
+#bindsym $mod+d focus child
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Establecer Wallpaper via feh y otras aplicaciones al inicio 
+exec_always feh --bg-scale /home/rob/1.jpg
+exec --no-startup-id spotify
+exec_always insync start
+exec_always onedrive-d start
+exec_always onedrive-d # duplicado para un test
+
+#exec_always pb-for-desktop
+#exec --no-startup-id skype
+#exec_always freeplane
+#exec_always geany
+#exec_always CLIQZ
+#exec_always qbittorrent
+## Set startup volume
+#exec pactl set-sink-volume 0 '20%' &
+#xsetroot -solid "#333333"
+#exec_always ~/.i3/configure-xrandr.sh
+#exec feh --bg-fill ~/Pictures/blue_hair_cat_girl.jpg
+#exec_always xrdb -load ~/.i3/Xresources
+#exec urxvtd -o -f -q
+#exec dunst -config ~/.i3/dunst
+#exec nm-applet # newtork applet
+#exec udiskie -2 --tray
+#exec gnome-settings-daemon &
+#exec gnome-keyring-daemon &
+#exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+#exec gnome-screensaver &
+#exec xautolock -time 30 -locker "gnome-screensaver-command --lock" &
+#exec --no-startup-id compton --config ~/.i3/compton.conf
+#exec setxkbmap -layout "fr,be"
+#exec emacs --daemon
+#exec volumeicon
+
+#=========== --- Activar transparencias
+exec --no-startup-id compton -f
+
+#=========== --- Agregar compton para las transparencias (se que esta duplicado--fallback)
+exec_always compton -f
+
+#      
+#=========== ---ESTO SE HA PERSONALIZADO--- Establecer etiquetas a las areas
+# Establecer etiquetas a las areas de trabajo via https://github.com/FortAwesome/Font-Awesome/releases y
+# http://fontawesome.io/cheatsheet/
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10"
+
+#set $ws1 1:
+#set $ws2 2:
+#set $ws3 3:
+#set $ws4 4:
+#set $ws5 5:
+#set $ws6 6:
+#set $ws7 7:
+#set $ws8 8:
+#set $ws9 9:
+#set $ws0 10:
+#workspace screens
+#workspace $ws1 output VGA1
+#workspace $ws2 output VGA1
+#workspace $ws3 output VGA1
+#workspace $ws4 output DP1
+#workspace $ws5 output DP1
+#workspace $ws6 output DP1
+#workspace $ws7 output DP1
+#workspace $ws8 output VGA1
+#workspace $ws9 output VGA1
+#workspace $ws0 output DP1
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Establecer combinacion de teclas para lanzar areas de trabajo y renombrar automaticamente via variable 
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3 
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Establecer combinacion de teclas para mover a areas de trabajo y renombrar automaticamente via variable
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Asignas aplicacions a areas de trabajo especificas via obtener info xprop
+assign [class="freeplaneApplications - Freeplane - Modo Modo de Mapa Conceptual /home/rob/freeplaneApplications.mm"] $workspace1
+assign [class="Cliqz"] $workspace2
+assign [class="Google-chrome"] $workspace2
+assign [class="Firefox"] $workspace2
+assign [class="Chromium-browser"] $workspace2
+assign [class="vlc"] $workspace3
+assign [class="Opera"] $workspace9
+assign [class="Kodi"] $workspace3
+assign [class="Audacious"] $workspace3
+assign [class="qBittorrent"] $workspace4
+assign [class="GParted"] $workspace5
+assign [class="Nautilus"] $workspace6
+assign [class="Geany"] $workspace7
+assign [class="libprs500"] $workspace7
+assign [class="Skype"] $workspace9
+assign [class="Spotify"] $workspace8
+
+#=========== Recargar archivo de configuracion de i3
+bindsym $mod+Shift+c reload
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Habilitar como alt-tab
+bindsym Mod1+Tab focus right
+
+#=========== ---ESTO SE HA PERSONALIZADO--- 
+bindsym $mod+b exec google-chrome
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Ocultar bordes
+hide_edge_borders both
+
+#=========== Reiniciar i3 
+bindsym $mod+Shift+r restart
+
+#=========== Salir de i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Enserio quieres salir????' -b 'Si, salir de i3' 'i3-msg exit'"
+
+#=========== Cambiar el tamano a las ventanas (obvio que se puede usar el mouse para esto tambien)
+mode "resize" {
+        # Estas combinaciones de teclas se activan durante el modo de "cambio de tamano" unicamente 
+
+        # Presionando izquieda se hara menos ancha.
+        # Presionando derecha se hara mas ancha.
+        # Presionando arriba se hara mas grande.
+        # Presionando abajo se hara menos grande.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+       # Mismo efecto pero con las cursoras.
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # volver a modo normal: Enter o Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+####### Colores del Sistema y apariencia
+
+#=========== ---ESTO SE HA PERSONALIZADO--- establecer colores al sistema
+set $bg-color            #475263
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Colores de las ventanas
+#                       bordes              fondo              texto                indicador
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Barra de estado e informacion
+bar {
+	status_command i3blocks -c /home/rob/.config/i3/i3blocks.conf
+	colors {
+		background $bg-color
+		separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        status_command i3status
+#}
+
+#=========== --- activar icono de volumen y acceso a pavucontrol
+exec /usr/bin/pasystray
+
+#=========== ---Activar icono de red
+exec_always nm-applet
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Especificar que ventanas queremos que floten
+for_window [class="qTox"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="Vlc"] floating enable
+
+#=========== ---ESTO SE HA PERSONALIZADO--- ejecutar rofi como otra opcion a dmenu
+bindsym $mod+p exec rofi -show run -lines 26 -eh 2 -width 100 -padding 800 -opacity "50" -bw 0 -bc "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 11"
+
+#=========== ---ESTO SE HA PERSONALIZADO--- ejecutar rofi como otra opcion a dmenu
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Mostrar la ventana actual a pantalla completa
+bindsym $mod+f fullscreen
+
+#=========== ---ESTO SE HA PERSONALIZADO--- bloquear ventana activa
+bindsym $mod+Shift+x exec i3lock --color 475263 
+
+#=========== ---ESTO SE HA PERSONALIZADO--- Ejecutar un script para salir de i3
+bindsym $mod+Shift+Z mode "$mode_system"
+
+set $mode_system Exit (a) Apagar, (r) reiniciar, (b) bloquear, (s) logout, (u) suspender, (h) hibernar
+mode "$mode_system" {
+    bindsym a exec --no-startup-id ~/script/i3exit shutdown, mode "default"
+    bindsym r exec --no-startup-id ~/script/i3exit reboot, mode "default"
+    bindsym b exec --no-startup-id ~/script/i3exit lock, mode "default"
+    bindsym s exec --no-startup-id ~/script/i3exit logout, mode "default"
+    bindsym u exec --no-startup-id ~/script/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/script/i3exit hibernate, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}

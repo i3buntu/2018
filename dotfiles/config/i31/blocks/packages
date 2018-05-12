@@ -1,0 +1,13 @@
+#!/bin/bash
+
+URGENT_VALUE=5
+PACKAGE_COUNT=$(eopkg lu | wc -l)
+
+if [[ "${PACKAGE_COUNT}" -gt 1 ]]; then
+  echo "${PACKAGE_COUNT}" # full-text
+  echo "${PACKAGE_COUNT}" # short-text
+  echo ""
+  if [[ "${PACKAGE_COUNT}" -gt "${URGENT_VALUE}" ]]; then
+    exit 33
+  fi
+fi
