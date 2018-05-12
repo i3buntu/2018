@@ -204,8 +204,8 @@ sudo apt-get -y install python python-numpy python-qt4 python-qt4-gl python-setu
 	echo "*-----------------------------------------*"	
 	echo "*-----------------------------------------*"	
 	echo "*-----------------------------------------*"	
-	echo -e "\e[103;34m sudo apt-get install -y ubuntu-restricted-extras \e[0m"
-sudo apt-get install -y ubuntu-restricted-extras		 
+	echo -e "\e[103;34m sudo apt-get install -y ubuntu-restricted-extras ffmpeg \e[0m"
+sudo apt-get install -y ubuntu-restricted-extras ffmpeg		 
 	echo -e "\e[7m
 		 =========================================================================================
 		 [     ubuntu-restricted-extras     ] codecs multimedia y fuentes de microsoft            
